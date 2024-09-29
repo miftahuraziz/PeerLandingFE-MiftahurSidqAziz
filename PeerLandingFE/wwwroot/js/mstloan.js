@@ -26,11 +26,16 @@ function populateBorrowerLoansTable(loans) {
     const loanTableBody = document.querySelector('#loanTable tbody');
     loanTableBody.innerHTML = '';
     loans.forEach(loan => {
+        const currencyFormat = new Intl.NumberFormat('en-ID', {
+            style: 'currency',
+            currency: 'IDR'
+        });
+        amount = currencyFormat.format(loan.amount)
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${loan.amount}</td>
-            <td>${loan.interestRate}</td>
-            <td>${loan.duration}</td>
+            <td>${amount}</td>
+            <td>${loan.interestRate} (2.5%)</td>
+            <td>${loan.duration} months</td>
             <td>${loan.status}</td>
             <td>
                 <button class="btn btn-primary btn-sm">Detail</button>

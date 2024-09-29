@@ -26,11 +26,16 @@ function populateFundingsTable(fundings) {
     fundingsTable.innerHTML = '';
     fundings.forEach(funding => {
         const date = new Date(funding.fundedAt).toDateString();
+        const currencyFormat = new Intl.NumberFormat('en-ID', {
+            style: 'currency',
+            currency: 'IDR'
+        });
+        const amount = currencyFormat.format(funding.amount)
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${funding.borrowerName}</td>
             <td>${funding.lenderName}</td>
-            <td>${funding.amount} Months</td>
+            <td>${amount}</td>
             <td>${date}</td>
             <td>${funding.status}</td>
             `;

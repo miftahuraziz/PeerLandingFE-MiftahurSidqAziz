@@ -22,12 +22,17 @@ function populateUserTable(users) {
     const userTableBody = document.querySelector('#userTable tbody');
     userTableBody.innerHTML = '';
     users.forEach(user => {
+        const currencyFormat = new Intl.NumberFormat('en-ID', {
+            style: 'currency',
+            currency: 'IDR'
+        });
+        balance = currencyFormat.format(user.balance)
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.role}</td>
-            <td>${user.balance}</td>
+            <td>${balance}</td>
             <td>
                 <button class="btn btn-primary btn-sm" onclick="editUser('${user.id}')">Edit</button>
                 <button class="btn btn-danger btn-sm" onclick="deleteUser('${user.id}')">Delete</button>
