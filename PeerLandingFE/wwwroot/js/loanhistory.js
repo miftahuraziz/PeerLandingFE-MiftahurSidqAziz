@@ -1,7 +1,7 @@
 ﻿async function fetchFundings() {
-    //const token = localStorage.getItem('jwtToken');
+    const lenderId = localStorage.getItem('id');
 
-    const response = await fetch(`/ApiFunding/GetAllFundings`, {
+    const response = await fetch(`/ApiFunding/GetAllFundings?lenderId=${lenderId}`, {
         method: 'GET'
     });
     console.log(response);
