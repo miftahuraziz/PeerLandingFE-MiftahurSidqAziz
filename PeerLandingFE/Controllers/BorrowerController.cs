@@ -2,9 +2,13 @@
 
 namespace PeerLandingFE.Controllers
 {
-    public class MstUser : Controller
+    public class BorrowerController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Home()
         {
             return View();
         }

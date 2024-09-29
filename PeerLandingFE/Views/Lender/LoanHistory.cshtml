@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Loan History";
+    Layout = "_LayoutLender";
+}
+
+<h3>Loan History (Funded) List</h3>
+<table class="table table-stripped" id="fundingsTable">
+    <thead>
+        <tr>
+            <th>Borrower Name</th>
+            <th>Lender Name</th>
+            <th>Amount</th>
+            <th>Funded At</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/loanhistory.js" asp-append-version="true"></script>
+}

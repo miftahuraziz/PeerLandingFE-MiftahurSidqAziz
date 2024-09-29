@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Loan";
+    Layout = "_LayoutLender";
+}
+<head>
+
+</head>
+<body>
+    <h5 style="text-align:center">Balance: </h5>
+    <h3 style="text-align:center" id="balance">...</h3>
+    <div class="container my-3">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBalanceModal" id="btnAddBalance">Add Balance</button>
+        </div>
+    </div>
+
+    <h2>Loan List</h2>
+    <table class="table table-stripped" id="loansTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Interest Rate</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Modal Add Balance -->
+    <div class="modal fade" id="addBalanceModal" tabindex="-1" role="dialog" aria-labelledby="addBalanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <h5 class="modal-title" id="addBalanceModalLabel">Add Balance</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editSaldoForm">
+                    <div class="form-group">
+                        <label for="saldoAmount">Amount</label>
+                        <input type="number" class="form-control" id="balanceAmount" required />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="addBalance()">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal Add Balance -->
+
+<!-- Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Confirm Action</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to fund this loan request?
+      </div>
+      <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="confirmYes" onclick="fundingLoan()">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+@section Scripts {
+    <script src="~/js/lender.js" asp-append-version="true"></script>
+    <script>
+        document.getElementById('btnAddBalance').addEventListener('click', function () {
+            $('#addBalanceModal').modal('show');
+        });
+    </script>
+}
